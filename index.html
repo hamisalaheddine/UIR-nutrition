@@ -6,83 +6,109 @@
 <meta name="theme-color" content="#0A2A5E">
 <meta name="description" content="Portail officiel du club UIR Nutrition, initié par les étudiants du Master 2 en Nutrition Clinique de l’Université Internationale de Rabat.">
 <title>UIR Nutrition – Portail officiel du club</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥗</text></svg>">
+<link rel="icon" href="assets/logo-uir-nutrition.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Newsreader:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-tailwind.config={theme:{extend:{
-  fontFamily:{sans:['Figtree','system-ui','sans-serif'],display:['Newsreader','Georgia','serif']},
-  colors:{navy:{DEFAULT:'#0A2A5E',700:'#123A7C',900:'#061A3F'},vita:{DEFAULT:'#15803D',400:'#4ADE80',50:'#EEF9F2',100:'#D3F0DE'}},
-  boxShadow:{soft:'0 12px 32px -16px rgba(10,42,94,.35)',lift:'0 24px 48px -20px rgba(10,42,94,.5)'}
-}}};
+tailwind.config={theme:{
+  /* CHARTE UIR NUTRITION : ce sont les seules couleurs disponibles */
+  colors:{transparent:'transparent',current:'currentColor',white:'#FFFFFF',snow:'#F8FAFC',
+    navy:'#0A2A5E',   /* Bleu institutionnel */
+    vita:'#16A34A',   /* Vert santé : textes et icônes sur fond clair */
+    slot:'#10B981'},  /* Vert vitalité : créneaux et boutons (texte navy = contraste 5,5:1) */
+  extend:{
+    fontFamily:{sans:['Figtree','system-ui','sans-serif'],display:['Newsreader','Georgia','serif']},
+    boxShadow:{soft:'0 12px 32px -16px rgba(10,42,94,.35)',lift:'0 24px 48px -20px rgba(10,42,94,.5)'}
+  }
+}};
 /* Image introuvable (logo, photo) : on affiche un emplacement de remplacement */
 function fb(i,c){const s=document.createElement('span');s.className=c;s.textContent=i.dataset.t;i.replaceWith(s)}
 </script>
 <style type="text/tailwindcss">
 @layer components{
-  .ph-logo{@apply grid h-14 w-40 max-w-[46%] place-items-center rounded-xl border border-dashed border-navy/30 bg-slate-50 px-3 text-center text-xs font-semibold leading-tight text-navy/50}
-  .av{@apply mx-auto h-24 w-24 rounded-full ring-4 ring-vita-100 sm:h-28 sm:w-28}
-  .ph-av{@apply grid place-items-center bg-gradient-to-br from-navy to-navy-700 font-display text-3xl font-semibold text-white}
+  .ph-logo{@apply grid h-14 w-40 max-w-full place-items-center rounded-xl border border-dashed border-navy/30 bg-snow px-3 text-center text-xs font-semibold leading-tight text-navy/50}
+  .av{@apply mx-auto h-24 w-24 rounded-full ring-4 ring-vita/20 sm:h-28 sm:w-28}
+  .ph-av{@apply grid place-items-center bg-gradient-to-br from-navy to-vita font-display text-3xl font-semibold text-white}
   .cardx{@apply rounded-3xl bg-white shadow-soft ring-1 ring-navy/5 transition duration-300 hover:-translate-y-1.5 hover:shadow-lift}
-  .tab{@apply block rounded-full px-4 py-2 text-sm font-semibold text-navy/70 transition hover:text-navy sm:px-6}
-  .fld{@apply mt-2 block w-full rounded-xl border border-slate-300 bg-white px-4 py-3.5 text-base font-normal text-slate-800 shadow-sm transition placeholder:text-slate-400 hover:border-slate-400 focus:border-vita focus:outline-none focus:ring-4 focus:ring-vita-400/25}
+  .tab{@apply block whitespace-nowrap rounded-full px-2.5 py-2 text-[13px] font-semibold text-navy/70 transition hover:text-navy sm:px-6 sm:text-sm}
+  .day{@apply relative flex h-12 flex-col items-center justify-center rounded-xl text-sm font-bold text-navy transition hover:bg-slot/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy sm:h-16}
+  .off{@apply flex h-12 items-center justify-center rounded-xl bg-navy/[.04] text-sm text-navy/30 sm:h-16}
+  .navbtn{@apply grid h-10 w-10 place-items-center rounded-full bg-navy/5 text-xl font-bold text-navy transition hover:bg-navy hover:text-white disabled:pointer-events-none disabled:opacity-30}
+  .slot{@apply min-w-[4.5rem] rounded-xl bg-slot px-4 py-2.5 text-sm font-bold text-navy transition hover:-translate-y-0.5 hover:bg-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy}
+  .opt{@apply flex-1 cursor-pointer rounded-xl border border-navy/20 bg-white px-5 py-3.5 text-center text-sm font-semibold text-navy transition hover:border-navy/40}
+  .fld{@apply mt-2 block w-full rounded-xl border border-navy/20 bg-white px-4 py-3.5 text-base font-normal text-navy shadow-sm transition placeholder:text-navy/40 hover:border-navy/40 focus:border-vita focus:outline-none focus:ring-4 focus:ring-vita/25}
 }
 </style>
 <style>
 @keyframes up{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
 .in1{animation:up .7s .05s both}.in2{animation:up .7s .2s both}.in3{animation:up .8s .35s both}
+.view:not(.hidden){animation:up .45s ease backwards}
 .dots{background-image:radial-gradient(rgba(255,255,255,.1) 1px,transparent 1px);background-size:22px 22px}
 nav a[aria-current],nav a[aria-current]:hover{background:#0A2A5E;color:#fff;box-shadow:0 4px 12px -4px rgba(10,42,94,.5)}
+.day[aria-pressed=true]{background:#0A2A5E;color:#fff}
+.opt:has(input:checked){background:#0A2A5E;color:#fff;border-color:#0A2A5E}
+.opt:has(input:focus-visible){outline:3px solid #10B981;outline-offset:2px}
+nav ul::-webkit-scrollbar{display:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
-<body class="bg-slate-50 font-sans text-base text-slate-700 antialiased">
+<body class="bg-snow font-sans text-base text-navy/80 antialiased">
 
-<header class="bg-white">
-  <div class="h-1.5 bg-gradient-to-r from-navy via-navy-700 to-vita-400"></div>
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-    <!-- Logos (160 × 56 px) : déposez les fichiers dans /assets ou modifiez src -->
-    <img src="assets/logo-uir.png" alt="Logo UIR" width="160" height="56" class="h-14 w-40 max-w-[46%] object-contain object-left" data-t="Logo UIR" onerror="fb(this,'ph-logo')">
-    <img src="assets/logo-uir-nutrition.png" alt="Logo UIR Nutrition" width="160" height="56" class="h-14 w-40 max-w-[46%] object-contain object-right" data-t="Logo UIR Nutrition" onerror="fb(this,'ph-logo')">
+<div class="h-1.5 bg-gradient-to-r from-navy to-slot"></div>
+
+<!-- EN-TÊTE : dès 1024 px, une seule ligne = logo UIR (gauche) · navigation (centre) · logo UIR Nutrition (droite).
+     Sur mobile : logos en haut, navigation dessous (elle reste collée en haut de l’écran au défilement). -->
+<header class="contents lg:sticky lg:top-0 lg:z-40 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-6 lg:border-b lg:border-navy/10 lg:bg-white/90 lg:px-8 lg:py-3 lg:backdrop-blur-md">
+  <!-- Logos (160 × 56 px) : déposez les fichiers dans /assets ou modifiez src -->
+  <div class="flex items-center justify-between bg-white px-4 py-3 sm:px-6 lg:contents">
+    <div class="flex flex-1 lg:col-start-1 lg:row-start-1">
+      <img src="assets/logo-uir.png" alt="Logo UIR" width="160" height="56" class="h-14 w-40 max-w-full object-contain object-left" data-t="Logo UIR" onerror="fb(this,'ph-logo')">
+    </div>
+    <div class="flex flex-1 justify-end lg:col-start-3 lg:row-start-1">
+      <img src="assets/logo-uir-nutrition.png" alt="Logo UIR Nutrition" width="160" height="56" class="h-14 w-40 max-w-full object-contain object-right" data-t="Logo UIR Nutrition" onerror="fb(this,'ph-logo')">
+    </div>
   </div>
+  <nav aria-label="Navigation principale" class="sticky top-0 z-40 border-y border-navy/10 bg-white/90 backdrop-blur-md lg:static lg:col-start-2 lg:row-start-1 lg:border-0 lg:bg-transparent lg:backdrop-blur-none">
+    <ul class="mx-auto my-2 flex w-fit max-w-full gap-1 overflow-x-auto rounded-full bg-navy/5 p-1 [scrollbar-width:none] lg:my-0">
+      <li><a href="#accueil" aria-current="page" class="tab">Accueil</a></li>
+      <li><a href="#conseils" class="tab">Conseils</a></li>
+      <li><a href="#rendez-vous" class="tab">Rendez-vous</a></li>
+      <li><a href="#rejoignez-nous" class="tab">Rejoignez-nous</a></li>
+    </ul>
+  </nav>
 </header>
-
-<nav aria-label="Navigation principale" class="sticky top-0 z-40 border-b border-navy/10 bg-white/85 backdrop-blur-md">
-  <ul class="mx-auto my-2 flex w-fit max-w-full gap-1 rounded-full bg-slate-100 p-1">
-    <li><a href="#accueil" aria-current="page" class="tab">Accueil</a></li>
-    <li><a href="#conseils" class="tab">Conseils</a></li>
-    <li><a href="#rejoignez-nous" class="tab">Rejoignez-nous</a></li>
-  </ul>
-</nav>
 
 <main>
 
 <!-- ACCUEIL -->
-<section id="accueil" class="scroll-mt-16">
-  <div class="relative isolate overflow-hidden rounded-b-[2.5rem] bg-gradient-to-br from-navy-900 via-navy to-navy-700 text-white md:rounded-b-[4rem]">
-    <div class="dots absolute inset-0 -z-10"></div>
+<section id="accueil" class="view scroll-mt-16">
+  <div class="relative isolate overflow-hidden rounded-b-[2.5rem] bg-navy text-white md:rounded-b-[4rem]">
+    <img src="assets/fond-accueil.jpg" alt="Fond UIR Nutrition" class="absolute inset-0 -z-20 h-full w-full object-cover">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-navy/95 via-navy/70 to-navy/20"></div>
+    <div class="dots absolute inset-0 -z-10 opacity-30"></div>
     <div class="absolute -right-32 top-10 -z-10 h-96 w-96 rounded-full bg-vita/30 blur-3xl"></div>
     <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 py-16 sm:px-6 lg:grid-cols-12 lg:py-28">
       <div class="lg:col-span-7">
         <h1 class="in1 font-display text-4xl font-semibold leading-[1.1] sm:text-5xl lg:text-6xl">Bienvenue sur le portail officiel du club UIR Nutrition</h1>
         <p class="in2 mt-7 max-w-2xl text-lg leading-relaxed text-white/80">Initié par les étudiants du Master 2 en Nutrition Clinique, notre club s’engage à promouvoir la santé, le bien-être et l’éducation nutritionnelle au sein de l’Université Internationale de Rabat. En synergie avec les clubs sportifs, nous accompagnons les étudiants vers un mode de vie sain, tout en menant une réflexion continentale sur les enjeux de la sécurité alimentaire en Afrique.</p>
         <div class="in2 mt-9 flex flex-col gap-3 sm:flex-row">
-          <a href="#missions" class="rounded-full bg-vita-400 px-7 py-3.5 text-center font-bold text-navy-900 shadow-lg shadow-vita-400/20 transition hover:-translate-y-0.5 hover:bg-white">Découvrir nos missions</a>
+          <a href="#missions" class="rounded-full bg-slot px-7 py-3.5 text-center font-bold text-navy shadow-lg shadow-slot/20 transition hover:-translate-y-0.5 hover:bg-white">Découvrir nos missions</a>
           <a href="#bureau" class="rounded-full px-7 py-3.5 text-center font-bold ring-1 ring-white/40 transition hover:-translate-y-0.5 hover:bg-white/10">Rencontrer l’équipe</a>
         </div>
       </div>
       <!-- PHOTO : ajoutez dans le bloc clair <img src="assets/equipe.jpg" alt="L’équipe UIR Nutrition" class="absolute inset-0 h-full w-full object-cover"> -->
       <figure class="in3 relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
-        <div class="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] bg-vita-400/20 ring-1 ring-vita-400/40"></div>
-        <div class="relative aspect-[5/4] overflow-hidden rounded-[2rem] bg-gradient-to-br from-vita-50 via-white to-sky-100 shadow-2xl lg:aspect-[4/5]">
-          <div class="absolute -right-12 -top-12 h-52 w-52 rounded-full bg-vita-400/25"></div>
+        <div class="absolute inset-0 translate-x-3 translate-y-3 rounded-[2rem] bg-slot/20 ring-1 ring-slot/40"></div>
+        <div class="relative aspect-[5/4] overflow-hidden rounded-[2rem] bg-gradient-to-br from-vita/15 via-white to-navy/10 shadow-2xl lg:aspect-[4/5]">
+          <img src="assets/equipe.jpg" alt="L’équipe UIR Nutrition" class="absolute inset-0 z-10 h-full w-full object-cover">
+          <div class="absolute -right-12 -top-12 h-52 w-52 rounded-full bg-slot/25"></div>
           <div class="absolute -bottom-20 -left-12 h-64 w-64 rounded-full bg-navy/10"></div>
         </div>
         <figcaption class="absolute inset-x-4 bottom-4 rounded-2xl bg-white/95 p-4 shadow-lg backdrop-blur">
           <p class="font-display text-lg font-semibold text-navy">L’équipe UIR Nutrition sur le campus</p>
-          <p class="text-sm text-slate-500">Université Internationale de Rabat</p>
+          <p class="text-sm text-navy/70">Université Internationale de Rabat</p>
         </figcaption>
       </figure>
     </div>
@@ -90,53 +116,164 @@ nav a[aria-current],nav a[aria-current]:hover{background:#0A2A5E;color:#fff;box-
 
   <div id="missions" class="mx-auto max-w-6xl scroll-mt-20 px-5 py-20 sm:px-6 md:py-28">
     <h2 class="font-display text-3xl font-semibold text-navy sm:text-5xl">Nos Missions &amp; Nos Engagements</h2>
-    <p class="mt-4 max-w-2xl text-lg text-slate-600">Trois axes d’action pour la santé, le bien-être et l’éducation nutritionnelle de la communauté universitaire.</p>
+    <p class="mt-4 max-w-2xl text-lg text-navy/70">Trois axes d’action pour la santé, le bien-être et l’éducation nutritionnelle de la communauté universitaire.</p>
     <div id="missionGrid" class="mt-12 grid gap-6 md:grid-cols-3"></div>
   </div>
 
-  <div id="bureau" class="scroll-mt-20 bg-vita-50 px-5 py-20 sm:px-6 md:py-28">
+  <div id="bureau" class="scroll-mt-20 bg-vita/[.07] px-5 py-20 sm:px-6 md:py-28">
     <div class="mx-auto max-w-6xl">
       <h2 class="font-display text-3xl font-semibold text-navy sm:text-5xl">Le Bureau Exécutif &amp; Mentorat</h2>
-      <p class="mt-4 max-w-2xl text-lg text-slate-600">Les étudiants qui animent le club et l’enseignante qui les accompagne.</p>
+      <p class="mt-4 max-w-2xl text-lg text-navy/70">Les étudiants qui animent le club et l’enseignante qui les accompagne.</p>
       <ul id="team" class="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3"></ul>
     </div>
   </div>
 </section>
 
 <!-- CONSEILS -->
-<section id="conseils" class="scroll-mt-16 bg-white px-5 py-20 sm:px-6 md:py-28">
+<section id="conseils" class="view hidden scroll-mt-16 bg-white px-5 py-20 sm:px-6 md:py-28">
   <div class="mx-auto max-w-6xl">
     <h2 class="font-display text-3xl font-semibold text-navy sm:text-5xl">Conseils</h2>
-    <p class="mt-4 max-w-2xl text-lg text-slate-600">Des fiches pratiques pour mieux manger, mieux bouger et prendre soin de sa santé au quotidien.</p>
+    <p class="mt-4 max-w-2xl text-lg text-navy/70">Des fiches pratiques pour mieux manger, mieux bouger et prendre soin de sa santé au quotidien.</p>
+    <!-- ÉVALUEZ VOS BESOINS : calculateur (équation de Mifflin-St Jeor) -->
+    <div id="besoins" class="mt-10 rounded-3xl bg-white p-6 shadow-soft ring-1 ring-navy/5 sm:p-8 lg:p-10">
+      <h3 class="font-display text-2xl font-semibold text-navy sm:text-3xl">Évaluez vos besoins</h3>
+      <p class="mt-2 max-w-2xl text-navy/70">Estimez votre métabolisme de base et votre dépense énergétique journalière grâce à l’équation de Mifflin-St Jeor.</p>
+      <form id="calc" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <fieldset>
+          <legend class="text-sm font-semibold text-navy">Sexe</legend>
+          <div class="mt-2 flex gap-2">
+            <label class="opt"><input type="radio" name="sexe" value="Homme" required class="sr-only">Homme</label>
+            <label class="opt"><input type="radio" name="sexe" value="Femme" class="sr-only">Femme</label>
+          </div>
+        </fieldset>
+        <label class="block text-sm font-semibold text-navy">Âge (années)<input name="age" type="number" inputmode="numeric" min="15" max="100" required class="fld"></label>
+        <label class="block text-sm font-semibold text-navy">Poids (kg)<input name="poids" type="number" inputmode="decimal" min="30" max="250" step="0.1" required class="fld"></label>
+        <label class="block text-sm font-semibold text-navy">Taille (cm)<input name="taille" type="number" inputmode="numeric" min="120" max="230" required class="fld"></label>
+        <div class="sm:col-span-2 lg:col-span-4">
+          <label class="block text-sm font-semibold text-navy">Facteur d’activité
+           <select name="act" required class="fld">
+             <option value="" disabled selected>Choisissez votre niveau d’activité</option>
+             <option value="light">Léger</option>
+             <option value="moderate">Modéré</option>
+             <option value="heavy">Intense</option>
+            </select>
+          </label>
+          <p class="mt-2 text-xs text-navy/70">Si vous ne connaissez pas votre niveau d’activité, découvrez-le via le questionnaire GPAQ (PDF à télécharger prochainement).</p>
+        </div>
+        <button type="submit" class="rounded-full bg-navy px-8 py-3.5 font-bold text-white shadow-lg shadow-navy/20 transition hover:-translate-y-0.5 hover:bg-slot hover:text-navy sm:col-span-2 lg:col-span-4 lg:justify-self-start">Calculer</button>
+      </form>
+
+      <!-- Résultats : affichés après le clic sur « Calculer » -->
+      <div id="res" class="mt-8 hidden border-t border-navy/10 pt-8">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl bg-navy p-6 text-white"><p class="text-sm font-semibold text-white/80">Métabolisme de Base (MB)</p><p class="mt-2 font-display text-5xl font-semibold"><span id="mb"></span> <span class="text-base font-normal text-white/80">kcal/jour</span></p></div>
+          <div class="rounded-2xl bg-slot p-6 text-navy"><p class="text-sm font-semibold">Dépense Énergétique Journalière Totale (TDEE)</p><p class="mt-2 font-display text-5xl font-semibold"><span id="tdee"></span> <span class="text-base font-normal">kcal/jour</span></p></div>
+        </div>
+        <p class="mt-3 text-xs text-navy/70">Estimations indicatives, en kcal par jour.</p>
+        <div class="mt-6 rounded-2xl border-2 border-slot bg-slot/10 p-5">
+          <p class="font-semibold text-navy">Pour de meilleurs résultats et pour mieux interpréter votre composition corporelle, prenez rendez-vous avec nous ci-dessous.</p>
+          <a href="#rendez-vous" class="mt-4 inline-block rounded-full bg-navy px-6 py-3 font-bold text-white transition hover:bg-slot hover:text-navy">Prendre rendez-vous</a>
+        </div>
+        <!-- COLLECTE POUR LA RECHERCHE : méthode POST. Remplacez VOTRE_ID_RECHERCHE par votre identifiant Formspree. -->
+        <form data-send id="envoi" class="mt-6 rounded-2xl bg-snow p-5 ring-1 ring-navy/10 sm:p-6">
+          <input type="hidden" name="_subject" value="Résultats du calculateur – recherche UIR Nutrition">
+          <div id="champs"></div><!-- rempli automatiquement avec les résultats calculés -->
+          <div class="grid gap-4 sm:grid-cols-2">
+            <label class="block text-sm font-semibold text-navy">Nom <span class="ml-1 rounded-full bg-navy/10 px-2 py-0.5 text-xs font-bold">Optionnel</span><input name="nom" type="text" autocomplete="off" class="fld"></label>
+            <label class="block text-sm font-semibold text-navy">Prénom <span class="ml-1 rounded-full bg-navy/10 px-2 py-0.5 text-xs font-bold">Optionnel</span><input name="prenom" type="text" autocomplete="off" class="fld"></label>
+          </div>
+          <p class="mt-3 text-xs text-navy/70">Nom et prénom sont facultatifs : laissez-les vides pour participer de façon anonyme.</p>
+          <button type="submit" class="mt-4 w-full rounded-full bg-navy px-8 py-3.5 font-bold text-white shadow-lg shadow-navy/20 transition hover:-translate-y-0.5 hover:bg-slot hover:text-navy sm:w-auto">Envoyer mes résultats au club (Anonyme)</button>
+        </form>
+      </div>
+    </div>
+
     <div id="tipGrid" class="mt-12 grid gap-6 md:grid-cols-3"></div>
   </div>
 </section>
 
+<!-- RENDEZ-VOUS -->
+<section id="rendez-vous" class="view hidden scroll-mt-16 px-5 py-16 sm:px-6 md:py-24">
+  <div class="mx-auto max-w-6xl">
+    <h2 class="font-display text-3xl font-semibold text-navy sm:text-5xl">Prise de Rendez-vous</h2>
+    <p class="mt-4 max-w-3xl text-lg leading-relaxed text-navy/70">Ces consultations permettent de réaliser une évaluation nutritionnelle : prise des mesures anthropométriques (composition corporelle, IMC) et questionnaire de base, afin de vous fournir des conseils personnalisés.</p>
+    <div class="mt-10 grid gap-6 lg:grid-cols-5">
+      <!-- CALENDRIER -->
+      <div class="rounded-3xl bg-white p-5 shadow-soft ring-1 ring-navy/5 sm:p-8 lg:col-span-3">
+        <div class="flex items-center justify-between gap-3">
+          <h3 id="moisTitre" class="font-display text-2xl font-semibold capitalize text-navy sm:text-3xl"></h3>
+          <div class="flex gap-2">
+            <button type="button" id="prec" aria-label="Mois précédent" class="navbtn">‹</button>
+            <button type="button" id="suiv" aria-label="Mois suivant" class="navbtn">›</button>
+          </div>
+        </div>
+        <div class="mt-6 grid grid-cols-7 gap-1 text-center text-xs font-bold uppercase tracking-wide text-navy/50 sm:gap-2">
+          <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+        </div>
+        <div id="cal" class="mt-2 grid grid-cols-7 gap-1 sm:gap-2"></div>
+        <p class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-navy/70">
+          <span class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-slot"></span>Créneaux libres</span>
+          <span class="flex items-center gap-2"><span class="h-3 w-3 rounded bg-navy"></span>Jour choisi</span>
+          <span class="flex items-center gap-2"><span class="h-3 w-3 rounded bg-navy/10"></span>Indisponible</span>
+        </p>
+      </div>
+      <!-- HORAIRES DU JOUR CHOISI -->
+      <div id="horaires" class="scroll-mt-24 rounded-3xl bg-white p-5 shadow-soft ring-1 ring-navy/5 sm:p-8 lg:col-span-2">
+        <p class="text-xs font-bold uppercase tracking-wide text-navy/50">Horaires disponibles</p>
+        <h3 id="jourTitre" class="mt-2 font-display text-2xl font-semibold capitalize text-navy"></h3>
+        <div id="agenda" class="mt-6 flex flex-wrap gap-2"></div>
+        <p class="mt-6 text-xs text-navy/60">Plusieurs étudiants peuvent choisir le même créneau. Un seul rendez-vous à la fois par étudiant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- REJOIGNEZ-NOUS -->
-<section id="rejoignez-nous" class="scroll-mt-16 px-5 py-20 sm:px-6 md:py-28">
+<section id="rejoignez-nous" class="view hidden scroll-mt-16 px-5 py-20 sm:px-6 md:py-28">
   <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-5">
-    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy-900 to-navy p-8 text-white sm:p-10 lg:col-span-2">
+    <div class="relative overflow-hidden rounded-3xl bg-navy p-8 text-white sm:p-10 lg:col-span-2">
       <div class="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-vita/40 blur-3xl"></div>
       <h2 class="relative font-display text-3xl font-semibold sm:text-4xl">Rejoignez-nous</h2>
       <p class="relative mt-4 leading-relaxed text-white/80">Une question, une idée ou l’envie de rejoindre le club ? Écrivez-nous.</p>
-      <ul class="relative mt-8 list-disc space-y-2 pl-5 text-white/90 marker:text-vita-400">
+      <ul class="relative mt-8 list-disc space-y-2 pl-5 text-white/90 marker:text-slot">
         <li>Rejoindre l’équipe du club</li><li>Proposer une idée ou une collaboration</li><li>Poser une question</li>
       </ul>
     </div>
     <!-- À REMPLACER : action = URL de votre service de formulaire (ex. Formspree). Sans cela, rien n’est envoyé. -->
-    <form action="https://formspree.io/f/xppqppwv" method="POST" class="grid gap-5 rounded-3xl bg-white p-6 shadow-soft ring-1 ring-navy/5 sm:grid-cols-2 sm:p-10 lg:col-span-3">
+    <form data-send class="grid gap-5 rounded-3xl bg-white p-6 shadow-soft ring-1 ring-navy/5 sm:grid-cols-2 sm:p-10 lg:col-span-3">
       <label class="block text-sm font-semibold text-navy">Nom<input name="nom" type="text" required autocomplete="family-name" placeholder="Votre nom" class="fld"></label>
       <label class="block text-sm font-semibold text-navy">Prénom<input name="prenom" type="text" required autocomplete="given-name" placeholder="Votre prénom" class="fld"></label>
       <label class="block text-sm font-semibold text-navy sm:col-span-2">Email<input name="email" type="email" required autocomplete="email" placeholder="vous@exemple.com" class="fld"></label>
       <label class="block text-sm font-semibold text-navy sm:col-span-2">Message<textarea name="message" rows="5" required placeholder="Écrivez votre message ici…" class="fld resize-none"></textarea></label>
-      <button type="submit" class="rounded-full bg-navy px-8 py-4 font-bold text-white shadow-lg shadow-navy/20 transition hover:-translate-y-0.5 hover:bg-vita hover:shadow-xl hover:shadow-vita/30 active:translate-y-0 sm:col-span-2 sm:justify-self-start">Envoyer le message</button>
+      <button type="submit" class="rounded-full bg-navy px-8 py-4 font-bold text-white shadow-lg shadow-navy/20 transition hover:-translate-y-0.5 hover:bg-slot hover:text-navy hover:shadow-xl hover:shadow-slot/30 active:translate-y-0 sm:col-span-2 sm:justify-self-start">Envoyer le message</button>
     </form>
   </div>
 </section>
 
 </main>
 
-<footer class="bg-navy-900 text-white/80">
+
+<!-- FENÊTRE DE RÉSERVATION : s’ouvre au clic sur un créneau vert -->
+<dialog id="rdv" class="m-auto max-h-[92vh] w-[min(92vw,34rem)] overflow-y-auto rounded-3xl bg-white p-0 text-navy shadow-lift backdrop:bg-navy/70 backdrop:backdrop-blur-sm">
+  <!-- CONFIDENTIALITÉ : méthode POST, rien n’est affiché sur le site. Remplacez VOTRE_ID_RDV par votre identifiant Formspree. -->
+  <form data-send class="grid gap-4 p-6 sm:grid-cols-2 sm:p-8">
+    <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous – UIR Nutrition">
+    <input type="hidden" name="creneau" id="creneau">
+    <div class="flex items-start justify-between gap-4 sm:col-span-2">
+      <div><h3 class="font-display text-2xl font-semibold">Réserver ce créneau</h3><p id="choix" class="mt-1 font-bold text-vita first-letter:uppercase"></p></div>
+      <button type="button" id="fermer" aria-label="Fermer" class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-navy/5 text-lg transition hover:bg-navy hover:text-white">✕</button>
+    </div>
+    <label class="block text-sm font-semibold">Nom<input name="nom" type="text" required autocomplete="family-name" class="fld"></label>
+    <label class="block text-sm font-semibold">Prénom<input name="prenom" type="text" required autocomplete="given-name" class="fld"></label>
+    <label class="block text-sm font-semibold sm:col-span-2">Email étudiant<input name="email" type="email" required autocomplete="email" placeholder="prenom.nom@uir.ac.ma" class="fld"></label>
+    <label class="block text-sm font-semibold sm:col-span-2">Numéro étudiant<input name="numero_etudiant" type="text" required autocomplete="off" class="fld"></label>
+    <label class="block text-sm font-semibold sm:col-span-2">Raison de la consultation / Questionnaire de base<textarea name="raison" rows="4" required class="fld resize-none"></textarea></label>
+    <p class="text-xs text-navy/70 sm:col-span-2">Vos informations ne sont visibles par aucun autre étudiant : elles sont transmises uniquement au bureau du club.</p>
+    <button type="submit" class="rounded-full bg-navy px-8 py-4 font-bold text-white shadow-lg shadow-navy/20 transition hover:-translate-y-0.5 hover:bg-slot hover:text-navy sm:col-span-2">Envoyer ma demande</button>
+  </form>
+</dialog>
+
+<footer class="bg-navy text-white/80">
   <div class="mx-auto grid max-w-6xl gap-8 px-5 py-14 sm:px-6 md:grid-cols-3">
     <div>
       <p class="font-display text-2xl font-semibold text-white">UIR Nutrition</p>
@@ -150,7 +287,7 @@ nav a[aria-current],nav a[aria-current]:hover{background:#0A2A5E;color:#fff;box-
     <div>
       <p class="font-bold text-white">Suivez le club</p>
       <!-- À REMPLACER par l’URL réelle du compte Instagram du club -->
-      <a href="https://www.instagram.com/uir_nutrition/" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-3 font-semibold text-white ring-1 ring-white/25 transition hover:bg-vita">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-3 font-semibold text-white ring-1 ring-white/25 transition hover:bg-slot hover:text-navy">
         <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
         Instagram
       </a>
@@ -160,6 +297,7 @@ nav a[aria-current],nav a[aria-current]:hover{background:#0A2A5E;color:#fff;box-
 </footer>
 
 <script>
+const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwDnlrItJOkBazPtJ4lxWqBWIcfD6o5NrMiiSmWup5XTQFiHO8ow02VNSkrn92QP1Xw/exec";  
 const $=s=>document.querySelector(s);
 
 /* Icônes (style trait) */
@@ -179,7 +317,7 @@ $('#missionGrid').innerHTML=[
   ['heart','Éducation & Santé','Sensibilisation à l’alimentation équilibrée et à la prévention sanitaire au quotidien sur le campus.'],
   ['pulse','Nutrition & Sport','Synergie et ateliers pratiques en partenariat avec les clubs sportifs de l’UIR.'],
   ['globe','Enjeux Continentaux','Réflexion, conférences et sensibilisation sur la sécurité et l’insécurité alimentaire en Afrique.']
-].map(([k,t,d])=>`<article class="cardx group p-8"><span class="grid h-14 w-14 place-items-center rounded-2xl bg-navy text-vita-400 transition group-hover:bg-vita group-hover:text-white">${ic(k,'h-7 w-7')}</span><h3 class="mt-6 font-display text-2xl font-semibold text-navy">${t}</h3><p class="mt-3 leading-relaxed text-slate-600">${d}</p></article>`).join('');
+].map(([k,t,d])=>`<article class="cardx group p-8"><span class="grid h-14 w-14 place-items-center rounded-2xl bg-navy text-slot transition group-hover:bg-slot group-hover:text-navy">${ic(k,'h-7 w-7')}</span><h3 class="mt-6 font-display text-2xl font-semibold text-navy">${t}</h3><p class="mt-3 leading-relaxed text-navy/70">${d}</p></article>`).join('');
 
 /* Trombinoscope : photo attendue dans assets/equipe/<nom>.jpg (ex. hami.jpg), sinon initiales */
 $('#team').innerHTML=[
@@ -189,21 +327,298 @@ $('#team').innerHTML=[
   ['Asmae','LAKHYARI','Secrétaire Générale'],
   ['Isabella','NTABALA','Trésorière'],
   ['Maryem','YAZANE','Responsable Communication']
-].map(([f,l,r,s='',t=''])=>`<li class="cardx p-5 text-center sm:p-7"><img src="assets/equipe/${l.toLowerCase()}.jpg" alt="Photo de ${f} ${l}" class="av object-cover" data-t="${f[0]+l[0]}" onerror="fb(this,'av ph-av')"><h3 class="mt-5 font-display text-lg font-bold leading-tight text-navy sm:text-xl">${t}${f} ${l}</h3><p class="mt-1.5 text-sm font-bold text-vita">${r}</p>${s&&`<p class="mt-1 text-xs leading-snug text-slate-500">${s}</p>`}</li>`).join('');
+].map(([f,l,r,s='',t=''])=>`<li class="cardx p-5 text-center sm:p-7"><img src="assets/equipe/${l.toLowerCase()}.jpg" alt="Photo de ${f} ${l}" class="av object-cover" data-t="${f[0]+l[0]}" onerror="fb(this,'av ph-av')"><h3 class="mt-5 font-display text-lg font-bold leading-tight text-navy sm:text-xl">${t}${f} ${l}</h3><p class="mt-1.5 text-sm font-bold text-vita">${r}</p>${s&&`<p class="mt-1 text-xs leading-snug text-navy/70">${s}</p>`}</li>`).join('');
 
-/* Fiches conseils (contenu d’attente à remplacer) */
+/* Fiches conseils*/
 $('#tipGrid').innerHTML=[
-  ['zap','Nutrition sportive','Adapter son alimentation à l’effort : nos repères pour les étudiants sportifs arrivent bientôt.','from-navy to-navy-700'],
-  ['leaf','Gestion du stress par l’alimentation','Comprendre le lien entre assiette et équilibre émotionnel : cette fiche est en préparation.','from-vita to-emerald-600'],
-  ['drop','Hydratation au quotidien','Bien s’hydrater sur le campus : nos conseils pratiques seront bientôt disponibles.','from-navy-700 to-vita']
-].map(([k,t,d,g])=>`<article class="cardx flex flex-col overflow-hidden"><div class="relative flex h-40 items-end overflow-hidden bg-gradient-to-br ${g} p-5 text-white"><span class="absolute -bottom-10 -right-10 h-36 w-36 rounded-full bg-white/10"></span><span class="absolute right-4 top-4 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/30">Bientôt</span><span class="relative grid h-12 w-12 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/30">${ic(k)}</span></div><div class="flex flex-1 flex-col p-6"><h3 class="font-display text-2xl font-semibold leading-snug text-navy">${t}</h3><p class="mt-3 flex-1 leading-relaxed text-slate-600">${d}</p><button type="button" class="group mt-6 inline-flex items-center gap-2 self-start rounded-full border border-navy/20 px-5 py-2.5 text-sm font-bold text-navy transition hover:border-navy hover:bg-navy hover:text-white">Lire la suite ${ic('next','h-4 w-4 transition group-hover:translate-x-1')}</button></div></article>`).join('');
+  ['zap','Nutrition sportive','Adapter son alimentation à l’effort : nos repères pour les étudiants sportifs arrivent bientôt.','assets/sport.jpg'],
+  ['leaf','Gestion du stress par l’alimentation','Comprendre le lien entre assiette et équilibre émotionnel : cette fiche est en préparation.','assets/stress.jpg'],
+  ['drop','Hydratation au quotidien','Bien s’hydrater sur le campus : nos conseils pratiques seront bientôt disponibles.','assets/hydratation.jpg']
+].map(([k,t,d,img])=>`
+  <article class="cardx flex flex-col overflow-hidden group">
+    <div class="relative flex h-40 items-end overflow-hidden bg-navy p-5 text-white">
+      <img src="${img}" alt="${t}" class="absolute inset-0 z-0 h-full w-full object-cover opacity-60 transition duration-700 group-hover:scale-110 group-hover:opacity-80">
+      <span class="absolute right-4 top-4 z-10 rounded-full bg-navy/40 backdrop-blur-md px-3 py-1 text-xs font-semibold ring-1 ring-white/30">Bientôt</span>
+      <span class="relative z-10 grid h-12 w-12 place-items-center rounded-2xl bg-white/20 backdrop-blur-md ring-1 ring-white/30">${ic(k)}</span>
+    </div>
+    <div class="flex flex-1 flex-col p-6">
+      <h3 class="font-display text-2xl font-semibold leading-snug text-navy">${t}</h3>
+      <p class="mt-3 flex-1 leading-relaxed text-navy/70">${d}</p>
+      <button type="button" class="mt-6 inline-flex items-center gap-2 self-start rounded-full border border-navy/20 px-5 py-2.5 text-sm font-bold text-navy transition hover:border-navy hover:bg-navy hover:text-white">Lire la suite ${ic('next','h-4 w-4 transition group-hover:translate-x-1')}</button>
+    </div>
+  </article>
+`).join('');
 
 $('#yr').textContent=new Date().getFullYear();
 
-/* Onglet actif selon la section affichée */
-const tabs=[...document.querySelectorAll('nav a')];
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)tabs.forEach(a=>a.hash==='#'+e.target.id?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'))}),{rootMargin:'-40% 0px -55% 0px'});
-document.querySelectorAll('main>section[id]').forEach(s=>io.observe(s));
+/* ===== NAVIGATION : une seule section visible à la fois =====
+   Chaque <section class="view"> est affichée ou masquée avec la classe "hidden".
+   L’adresse change (#conseils, #rendez-vous…) : liens directs et bouton « Retour » fonctionnent. */
+const vues=[...document.querySelectorAll('.view')],onglets=[...document.querySelectorAll('nav a')];
+function route(){
+  const id=location.hash.slice(1),cible=vues.find(v=>v.id===id);
+  if(!cible&&id&&document.getElementById(id))return;      // simple ancre interne (#missions…) : le navigateur défile seul
+  const actif=cible||vues[0];
+  vues.forEach(v=>v.classList.toggle('hidden',v!==actif));
+  onglets.forEach(a=>a.hash==='#'+actif.id?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+  scrollTo({top:0,behavior:'instant'});
+}
+addEventListener('hashchange',route);route();
+
+/* ===== CALCULATEUR : équation de Mifflin-St Jeor =====
+   MB (Homme) = 10 × poids(kg) + 6,25 × taille(cm) − 5 × âge + 5
+   MB (Femme) = 10 × poids(kg) + 6,25 × taille(cm) − 5 × âge − 161
+   TDEE       = MB × facteur d’activité (les multiplicateurs sont les value="" des <option> du formulaire) */
+$('#calc').addEventListener('submit',e=>{
+  e.preventDefault();
+  const v=e.target.elements, age=+v.age.value, kg=+v.poids.value, cm=+v.taille.value, sexe=v.sexe.value, actLevel=v.act.value;
+  
+  // Application du tableau croisé Sexe / Activité
+  let act = 1.0;
+  if (sexe === 'Homme') {
+    if (actLevel === 'light') act = 1.55;
+    else if (actLevel === 'moderate') act = 1.78;
+    else if (actLevel === 'heavy') act = 2.10;
+  } else { // Femme
+    if (actLevel === 'light') act = 1.56;
+    else if (actLevel === 'moderate') act = 1.64;
+    else if (actLevel === 'heavy') act = 1.82;
+  }
+
+  const mb=Math.round(10*kg+6.25*cm-5*age+(sexe==='Homme'?5:-161));
+  const tdee=Math.round(mb*act);
+  $('#mb').textContent=mb.toLocaleString('fr-FR');
+  $('#tdee').textContent=tdee.toLocaleString('fr-FR');
+  /* Les résultats sont ajoutés au formulaire d’envoi (Formspree) sous forme de champs cachés */
+  $('#champs').innerHTML=Object.entries({sexe,age_ans:age,poids_kg:kg,taille_cm:cm,facteur_activite:v.act.selectedOptions[0].text,MB_kcal:mb,TDEE_kcal:tdee})
+    .map(([k,x])=>`<input type="hidden" name="${k}" value="${x}">`).join('');
+  $('#res').classList.remove('hidden');
+  $('#res').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+
+/* ===== CALENDRIER DES RENDEZ-VOUS =====
+   Le bureau ne modifie QUE les 3 blocs ci-dessous : DISPO, FERMES, PRIS. */
+
+// 1) Créneaux hebdomadaires, répétés chaque semaine.
+//    Un créneau s’écrit 'HH:MM' (heure seule)  OU  'HH:MM-HH:MM' (début-fin, affiché « 09:30 → 10:00 »).
+//    Exemple : mercredi:['09:30-10:00','10:00-11:00'],
+//    - Ajouter un créneau   : ajoutez son heure dans la liste du jour, ex. '16:00'
+//    - Supprimer un créneau : effacez son heure de la liste
+//    - Ajouter un jour      : ajoutez une ligne, ex.  samedi:['10:00','11:00'],
+//    - Un jour absent de cette liste n’est pas affiché.
+const DISPO={
+  lundi:[],
+  mardi:[],
+  mercredi:[],
+  jeudi:[],
+  vendredi:[]
+};
+// 2) Jours entièrement fermés (jour férié, absence…) : 'AAAA-MM-JJ'
+const FERMES=['2026-11-06','2026-11-18'];
+const EXCEPTIONS={
+  '2026-10-17':['10:00-14:00']     // samedi 17 octobre
+};
+// 3) Créneaux déjà réservés : ajoutez-les ici après confirmation (ils sont grisés) : 'AAAA-MM-JJ HH:MM'
+//    Le site est statique : un créneau reste cliquable tant qu’il n’est pas listé ici.
+const PRIS=[];
+// 4) Combien de jours à l’avance on peut réserver (ex. 45 = environ 6 semaines)
+const JOURS_A_L_AVANCE=45;
+let PRISAUTO=[];   // rempli automatiquement depuis Google Sheets
+
+/* --- Affichage : inutile d’y toucher --- */
+const JOURS=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+const iso=d=>d.toLocaleDateString('sv-SE');              // date locale au format AAAA-MM-JJ
+const pris=(k,t)=>PRIS.includes(`${k} ${t}`)||PRISAUTO.includes(`${k} ${t}`);
+// '09:30-10:00' -> {d:'09:30',f:'10:00'} ; '09:30' -> {d:'09:30',f:''} ; '9:30' devient '09:30'
+const hh=t=>{const [a,b='']=String(t).split('-').map(x=>x.trim().replace(/^(\d):/,'0$1:'));return {d:a,f:b}};
+const etiq=({d,f})=>f?`${d} → ${f}`:d;
+const minuit=d=>{const x=new Date(d);x.setHours(0,0,0,0);return x};
+
+// horaires encore libres pour un jour donné (liste vide = jour grisé)
+function libres(d){
+  const k=iso(d),nom=JOURS[d.getDay()],auj=minuit(new Date()),max=minuit(new Date());
+  max.setDate(max.getDate()+JOURS_A_L_AVANCE);
+  const H=EXCEPTIONS[k]||DISPO[nom];
+  if(!H||FERMES.includes(k)||d<auj||d>max)return [];
+  return H.filter(t=>{const {d:x}=hh(t);return new Date(`${k}T${x}`)>=new Date()&&!pris(k,x)});
+}
+function premierJourLibre(){
+  const d=minuit(new Date());
+  for(let i=0;i<=JOURS_A_L_AVANCE;i++){if(libres(d).length)return iso(d);d.setDate(d.getDate()+1)}
+  return null;
+}
+
+let mois=minuit(new Date());mois.setDate(1);             // mois affiché
+let choisi=null,initial=true;                            // jour choisi (AAAA-MM-JJ)
+
+function afficherCal(){
+  const y=mois.getFullYear(),m=mois.getMonth(),auj=iso(new Date());
+  $('#moisTitre').textContent=mois.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+  const decal=(new Date(y,m,1).getDay()+6)%7,nbj=new Date(y,m+1,0).getDate();
+  let h='<span></span>'.repeat(decal);
+  for(let j=1;j<=nbj;j++){
+    const d=new Date(y,m,j),k=iso(d),n=libres(d).length,ring=k===auj?' ring-2 ring-navy/30':'';
+    h+=n
+      ?`<button type="button" class="day${ring}" data-j="${k}" aria-pressed="${k===choisi}" aria-label="${d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})}, ${n} créneau${n>1?'x':''} libre${n>1?'s':''}"><span>${j}</span><span class="mt-1 h-1.5 w-1.5 rounded-full bg-slot"></span></button>`
+      :`<span class="off${ring}">${j}</span>`;
+  }
+  $('#cal').innerHTML=h;
+  const debut=minuit(new Date());debut.setDate(1);
+  const fin=minuit(new Date());fin.setDate(fin.getDate()+JOURS_A_L_AVANCE);fin.setDate(1);
+  $('#prec').disabled=mois<=debut;
+  $('#suiv').disabled=mois>=fin;
+}
+
+function afficherJour(){
+  const box=$('#agenda');
+  if(!choisi){
+    $('#jourTitre').textContent='Aucun créneau';
+    box.innerHTML='<p class="text-navy/70">Aucun créneau libre pour le moment. Revenez bientôt.</p>';return;
+  }
+  const d=new Date(choisi+'T00:00'),nom=JOURS[d.getDay()];
+  $('#jourTitre').textContent=d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});
+  const h=(EXCEPTIONS[choisi]||DISPO[nom]||[]).map(hh).filter(o=>new Date(`${choisi}T${o.d}`)>=new Date()).map(o=>pris(choisi,o.d)
+    ?`<span class="rounded-xl bg-navy/5 px-4 py-2.5 text-sm font-semibold text-navy/40 line-through" title="Complet">${etiq(o)}</span>`
+    :`<button type="button" class="slot" data-d="${choisi}" data-t="${o.d}" data-f="${o.f}">${etiq(o)}</button>`).join('');
+  box.innerHTML=h||'<p class="text-navy/70">Aucun créneau ce jour-là.</p>';
+}
+
+function afficher(){
+  if(initial){choisi=premierJourLibre();initial=false;if(choisi){mois=new Date(choisi+'T00:00');mois.setDate(1)}}
+  afficherCal();afficherJour();
+}
+$('#cal').addEventListener('click',e=>{
+  const b=e.target.closest('.day');if(!b)return;
+  choisi=b.dataset.j;afficherCal();afficherJour();
+  if(matchMedia('(max-width:1023px)').matches)$('#horaires').scrollIntoView({behavior:'smooth',block:'start'});
+});
+$('#prec').onclick=()=>{mois.setMonth(mois.getMonth()-1);afficherCal()};
+$('#suiv').onclick=()=>{mois.setMonth(mois.getMonth()+1);afficherCal()};
+
+/* Clic sur un créneau vert : ouverture du formulaire de réservation */
+const dlg=$('#rdv');
+$('#agenda').addEventListener('click',e=>{
+  const b=e.target.closest('.slot');if(!b)return;
+  const deja=monRdv();
+  if(deja){window.toast('Vous avez déjà un rendez-vous : '+deja.txt+'. Vous pourrez en reprendre un après.',false);return}
+  const txt=new Date(`${b.dataset.d}T${b.dataset.t}`).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})+(b.dataset.f?` de ${b.dataset.t} à ${b.dataset.f}`:' à '+b.dataset.t);
+  $('#choix').textContent=txt;
+  $('#creneau').value=`${txt} [${b.dataset.d}]`;             // envoyé au bureau avec le formulaire
+  dlg.dataset.slot=`${b.dataset.d} ${b.dataset.t}`;           // clé du créneau, vérifiée par le script
+  dlg.showModal();
+});
+$('#fermer').onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});   // clic en dehors du formulaire = fermer
+afficher();
+
+/* Créneaux déjà pris : lus depuis Google Sheets (le script ne renvoie que les créneaux, jamais de données perso) */
+/* Un seul rendez-vous par appareil tant qu’il n’est pas passé (ou annulé par le club) */
+function monRdv(){
+  try{
+    const m=JSON.parse(localStorage.getItem('rdv')||'null');
+    if(!m)return null;
+    const n=new Date();
+    if(m.slot<`${iso(n)} ${n.toTimeString().slice(0,5)}`){localStorage.removeItem('rdv');return null}
+    return m;
+  }catch(e){return null}
+}
+/* Le club a annulé la réservation (ligne supprimée dans le Sheet) : on libère l’appareil */
+async function verifierRdv(){
+  const m=monRdv();if(!m)return;
+  try{
+    if(!m.code){localStorage.removeItem('rdv');return}
+    const r=await fetch(URL_SCRIPT+'?action=mine&code='+encodeURIComponent(m.code));
+    const j=await r.json();
+    if(!j.active)localStorage.removeItem('rdv');
+  }catch(e){}
+}
+async function chargerPris(){
+  if(!URL_SCRIPT.includes('/exec'))return;
+  try{
+    const r=await fetch(URL_SCRIPT+'?action=taken');
+    const j=await r.json();
+    PRISAUTO=j.taken||[];afficher();
+    verifierRdv();
+  }catch(e){console.warn('Lecture des créneaux impossible',e)}
+}
+chargerPris();
+addEventListener('hashchange',()=>{if(location.hash==='#rendez-vous')chargerPris()});
+</script>
+<script>
+(() => {
+  /* Petite notification en haut de la page */
+  function toast(msg, ok = true) {
+    const t = document.createElement('div');
+    t.setAttribute('role', 'status');
+    t.innerHTML = '<span style="font-size:18px;color:' + (ok ? '#10B981' : '#fff') + ';">' + (ok ? '✓' : '✕') + '</span>' + msg;
+    t.style.cssText =
+      'position:fixed;top:20px;left:50%;transform:translate(-50%,-24px);opacity:0;z-index:99999;' +
+      'display:flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;' +
+      'font:600 15px Figtree,system-ui,sans-serif;color:#fff;max-width:92vw;' +
+      'box-shadow:0 12px 32px -12px rgba(10,42,94,.6);transition:all .35s ease;' +
+      'background:' + (ok ? '#0A2A5E' : '#B91C1C') + ';';
+    document.body.appendChild(t);
+    requestAnimationFrame(() => { t.style.opacity = '1'; t.style.transform = 'translate(-50%,0)'; });
+    setTimeout(() => {
+      t.style.opacity = '0'; t.style.transform = 'translate(-50%,-24px)';
+      setTimeout(() => t.remove(), 400);
+    }, 4000);
+  }
+
+  window.toast = toast;
+
+  document.querySelectorAll('form[data-send]').forEach(form => {
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const oldText = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Envoi...';
+
+      const dialog = form.closest('dialog');
+      const slot = dialog ? (dialog.dataset.slot || '') : '';      // seulement pour un rendez-vous
+      const data = new FormData(form);
+      const subject = data.get('_subject') || 'Nouveau message – UIR Nutrition';
+      data.delete('_subject');
+      const content = [...data.entries()]
+        .filter(([k, v]) => v !== '')
+        .map(([k, v]) => `${k} : ${v}`)
+        .join('\n');
+      const body = new URLSearchParams({ subject, content, reply_to: data.get('email') || '', slot });
+
+      try {
+        if (slot) {
+          // Rendez-vous : on lit la réponse du script (créneau libre ou déjà pris)
+          const res = await fetch(URL_SCRIPT, { method: 'POST', body });
+          const out = await res.json();
+          if (out.status === 'limit') {
+            dialog.close();
+            toast('Vous avez déjà un rendez-vous : ' + out.creneau + '. Vous pourrez en reprendre un après.', false);
+          } else if (out.status === 'taken') {
+            dialog.close();
+            toast('Ce créneau vient d’être réservé. Choisissez-en un autre.', false);
+            chargerPris();
+          } else if (out.status === 'ok') {
+            try { localStorage.setItem('rdv', JSON.stringify({ slot, txt: document.getElementById('choix').textContent, code: out.code || '' })); } catch (err) {}
+            form.reset(); dialog.close();
+            toast('Rendez-vous réservé avec succès');
+            chargerPris();
+          } else {
+            throw new Error('Réponse inattendue');
+          }
+        } else {
+          // Contact / calculateur : simple envoi
+          await fetch(URL_SCRIPT, { method: 'POST', mode: 'no-cors', body });
+          form.reset();
+          toast(form.id==='envoi'?'Résultats envoyés, merci !':'Message envoyé avec succès');
+        }
+      } catch (err) {
+        console.error(err);
+        toast("Erreur d'envoi, réessayez", false);
+      }
+      btn.disabled = false; btn.textContent = oldText;
+    });
+  });
+})();
 </script>
 </body>
 </html>
